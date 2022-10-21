@@ -13,7 +13,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 750px;
+    min-height: 800px;
     min-width: 500px;
     border: 10px ridge rgb(2, 2, 129);
     border-radius: 15px;
@@ -54,9 +54,9 @@ body {
     overflow-y: hidden;
     font-size: 40px;
     font-family: 'digital-7';
-    min-height: 40px;
-    max-height: 40px;
-    max-width: 420px;
+    min-height: 50px;
+    max-height: 50px;
+    max-width: 415px;
     margin: 2px;
     color: rgb(192, 201, 202);
 
@@ -98,7 +98,7 @@ body {
     background-color: rgb(39, 37, 37);
 }
 
-.clearDiv {
+.clearDiv, .equalDiv{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +107,8 @@ body {
     padding-bottom: 10px;
 }
 
-.clearDiv button{
+.clearDiv button,
+.equalDiv button{
     min-width: 180px;
     font-size:30px;
     padding: 5px;
@@ -120,9 +121,19 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.clearDiv button:hover{background-color: rgb(14, 13, 13);}
+.equalDiv {
+    padding: 20px 0px 20px 0px;
+}
 
-.clearDiv button:active{transform: translateY(2px);}
+.equalDiv button{
+    border: 4px solid rgb(106, 184, 58);
+}
+
+.clearDiv button:hover,
+.equalDiv button:hover{background-color: rgb(39, 34, 34);}
+
+.clearDiv button:active,
+.equalDiv button:active{transform: translateY(4px);}
 
 .buttonDiv {
     display: grid;
@@ -134,7 +145,11 @@ body {
     
 }
 
-.buttonDiv button{
+.numberBtn,
+.equal,
+.dotBtn,
+.negativeBtn,
+.operator {
     font-size:40px;
     padding: 10px;
     border: 3px solid blue;
@@ -146,14 +161,28 @@ body {
     box-shadow: 0px 6px #030303;
 }
 
-.buttonDiv button:hover{background-color: rgb(14, 13, 13);}
+.numberBtn:hover,
+.equal:hover,
+.dotBtn:hover,
+.negativeBtn:hover
+{background-color: rgb(28, 25, 25);}
 
-.buttonDiv button:active{transform: translateY(2px);}
+.numberBtn:active,
+.equal:active,
+.dotBtn:active,
+.negativeBtn:active
+{transform: translateY(4px);}
 
-.buttonDiv .operator{
-    border-color:brown;
+.operator{
+    border: 3px solid brown;
 }
 
-.buttonDiv .equal{
-    border-color: rgb(160, 160, 14);
+.operator:hover{background-color: rgb(67, 25, 25);}
+
+.operator:active{transform: translateY(4px);}
+
+.lightUp {
+    transform: translateY(2px);
+    border: 4px solid rgb(231, 77, 77);
+    background-color: rgb(67, 25, 25);
 }
