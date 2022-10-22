@@ -102,20 +102,20 @@ function keyOperator(e) {
     if (e.shiftKey) {
         if (e.key == "+"){
             operation(e, "+");
-            styleChange(e, "+")
+            styleChange(1, "+")
         }
         if (e.key == "*"){
             operation(e, "×");
-            styleChange(e, "×")
+            styleChange(1, "×")
         }
     }
     if (e.key == "/"){
         operation(e, "÷");
-        styleChange(e, "÷")
+        styleChange(1, "÷")
     }
     if (e.key == "-" && isNaN(+displayValue) == false){
         operation(e, "–");
-        styleChange(e, "–")
+        styleChange(1, "–")
     }
 }
 
@@ -142,31 +142,7 @@ window.addEventListener("keydown", (e) => {
 })
 
 //operator events
-const addBtn = document.querySelector("#addBtn");
-const subtractBtn = document.querySelector("#subtractBtn");
-const multiplyBtn = document.querySelector("#multiplyBtn");
-const divideBtn = document.querySelector("#divideBtn");
 
-const operatorArray = [addBtn, subtractBtn, multiplyBtn, divideBtn];
-const operatorSymbols = 
-operatorArray.forEach(operator => operator.addEventListener("click", (e) => styleChange(e, 1)))
-
-function styleChange(e, n){
-    let symbol;
-    if (n == 1){
-        if (displayValue === "") {symbol = "" ;}
-        else {symbol = e.target.textContent; }
-    }
-    if (n == 2) {symbol = ""};
-    for (let i = 0; i < operatorArray.length; i++){
-        if (symbol === operatorArray[i].textContent){
-            operatorArray[i].classList.add("lightUp");
-        }
-        else{
-            operatorArray[i].classList.remove("lightUp");
-        }
-    }
-}
 
 const operators = document.querySelectorAll(".operator");
 operators.forEach(operator => operator.addEventListener("click", (e) => operation(e, 1)));
@@ -202,7 +178,35 @@ function operation(e, n){
     }
 }
 
+const addBtn = document.querySelector("#addBtn");
+const subtractBtn = document.querySelector("#subtractBtn");
+const multiplyBtn = document.querySelector("#multiplyBtn");
+const divideBtn = document.querySelector("#divideBtn");
 
+const operatorArray = [addBtn, subtractBtn, multiplyBtn, divideBtn];
+const operatorSymbols = 
+operatorArray.forEach(operator => operator.addEventListener("click", (e) => styleChange(e, 1)))
+
+function styleChange(e, n){
+    let symbol;
+    if (e == 1){
+        if (saveNumbers.length > 0) {console.log("style3");symbol = n;}
+        else {return}
+    }
+    if (n == 1){
+        if (saveNumbers.length > 0) {symbol = e.target.textContent; }
+        else {return}
+    }
+    if (n == 2) {symbol = ""};
+    for (let i = 0; i < operatorArray.length; i++){
+        if (symbol === operatorArray[i].textContent){
+            operatorArray[i].classList.add("lightUp");
+        }
+        else{
+            operatorArray[i].classList.remove("lightUp");
+        }
+    }
+}
 
 //equalbtn event
 const equalBtn = document.querySelector(".equal"); 
