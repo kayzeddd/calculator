@@ -88,7 +88,7 @@ function keyDisplay(e) {
     if (e.key == "Backspace"){
         deleteLast();
     }
-    if (e.key == "-"){
+    if (e.key == "-" && displayValue === ""){
         addNegative();
     }
     if (e.key == "Enter"){
@@ -130,8 +130,16 @@ function clear(e){
     numDot = 0;
     numNegative = 0;
     saveNumbers = [];
-    styleChange(e);
+    answer = "";
+    usedEqual = false;
+    styleChange(e, 2);
 }
+
+window.addEventListener("keydown", (e) => {
+    if (e.key == "c") {
+        clear(e)
+    }
+})
 
 //operator events
 const addBtn = document.querySelector("#addBtn");
@@ -140,16 +148,18 @@ const multiplyBtn = document.querySelector("#multiplyBtn");
 const divideBtn = document.querySelector("#divideBtn");
 
 const operatorArray = [addBtn, subtractBtn, multiplyBtn, divideBtn];
-
+const operatorSymbols = 
 operatorArray.forEach(operator => operator.addEventListener("click", (e) => styleChange(e, 1)))
 
 function styleChange(e, n){
-    if (displayValue === "") {return}
     let symbol;
-    if (n == 1){symbol = e.target.textContent;}
-    else {symbol = n}
+    if (n == 1){
+        if (displayValue === "") {symbol = "" ;}
+        else {symbol = e.target.textContent; }
+    }
+    if (n == 2) {symbol = ""};
     for (let i = 0; i < operatorArray.length; i++){
-        if (symbol == operatorArray[i].textContent){
+        if (symbol === operatorArray[i].textContent){
             operatorArray[i].classList.add("lightUp");
         }
         else{
@@ -210,7 +220,7 @@ function doOperation(e){
         numDot = 0;
         numNegative = 0;
         usedEqual = true;
-        styleChange(e);
+        styleChange(e, 2);
     }
 }
 
@@ -219,6 +229,11 @@ const saveBtn = document.querySelector(".saveBtn");
 saveBtn.addEventListener("click", save);
 const saveDiv = document.querySelector(".saveDiv");
 
+window.addEventListener("keyup", (e) => {
+    if (e.key == "s"){
+        save();
+    }
+})
 
 function save(){
     if (usedEqual == true){
