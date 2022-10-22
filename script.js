@@ -262,31 +262,36 @@ function clearSave(){
 
 //Calculator funcs
 function add(a,b) {
-    return a + b;
+    let ans = a + b;
+    return isNaN(ans) ? "INPUT ERROR" : ans;
 }
 
 function subtract(a,b) {
     let a2 = a * 1000000000;
     let b2 = b * 1000000000;
-    return (a2 - b2) / 1000000000;
+    let ans = (a2 - b2)/ 1000000000;
+    return isNaN(ans) ? "INPUT ERROR" : ans;
 }
 
 function multiply(a,b) {
-    return a * b;
+    let ans = a * b;
+    return isNaN(ans) ? "INPUT ERROR" : ans;
 }
 
 function divide(a,b) {
     if (b == 0){return "0"};    
+    let ans;
     let div = (a / b).toString().split(".");
     if (div.length == 1){
-        return a / b;
+        ans = a / b;
     }
-    if (div[1].length > 8){
-        return (a / b).toFixed(8);
+    else if (div[1].length > 8){
+        ans = (a / b).toFixed(8);
     }
     else {
-        return (a/b);
+        ans = (a/b);
     }
+    return isNaN(ans) ? "INPUT ERROR" : ans;
     }
 
 function operate(a, operator, b) {
