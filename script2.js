@@ -5,15 +5,19 @@ let useOperator = "";
 let answer = "";
 let usedEqual = false;
 let selectedOperator = "";
+let numDot = 0;
+let numNegative = 0;
 
 //number display events
 const displayText = document.querySelector(".text");
 const calculations = document.querySelector(".calcs");
 const numbers = document.querySelectorAll(".numberBtn");
-numbers.forEach(number => number.addEventListener("click", displayNumber));
+numbers.forEach(number => number.addEventListener("click", e => displayNumber(e, 1)));
 
-function displayNumber(e){
-    let num = e.target.textContent;
+function displayNumber(e, n){
+    let num;
+    if (n == 1){num = e.target.textContent;}
+    if (n == 2){num = e.key;}
     if (usedEqual == true){
         usedEqual = false;
         displayValue = "";
@@ -26,7 +30,7 @@ function displayNumber(e){
 }
 }
 
-let numDot = 0;
+// '.' button event
 const dot = document.querySelector(".dotBtn");
 dot.addEventListener("click", addDot)
 
@@ -36,9 +40,8 @@ function addDot(){
         displayText.textContent = displayValue;
         numDot += 1;    
     }   
-}
 
-let numNegative = 0;
+}//'(-)' button event
 const negative = document.querySelector(".negativeBtn");
 negative.addEventListener("click", addNegative)
 
@@ -71,6 +74,51 @@ function deleteLast(){
     displayText.textContent = displayValue;}
 }
 
+//keyboard events
+window.addEventListener("keydown", keyDisplay);
+const keyArray = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+
+function keyDisplay(e) {
+    if (keyArray.includes(e.key)){
+        displayNumber(e, 2);
+    }
+    if (e.key == "."){
+        addDot();
+    }
+    if (e.key == "Backspace"){
+        deleteLast();
+    }
+    if (e.key == "-"){
+        addNegative();
+    }
+    if (e.key == "Enter"){
+        doOperation(e);
+    }
+}
+
+window.addEventListener("keydown", keyOperator);
+
+function keyOperator(e) {
+    if (e.shiftKey) {
+        if (e.key == "+"){
+            operation(e, "+");
+            styleChange(e, "+")
+        }
+        if (e.key == "*"){
+            operation(e, "×");
+            styleChange(e, "×")
+        }
+    }
+    if (e.key == "/"){
+        operation(e, "÷");
+        styleChange(e, "÷")
+    }
+    if (e.key == "-" && isNaN(+displayValue) == false){
+        operation(e, "–");
+        styleChange(e, "–")
+    }
+}
+
 //clear
 const clearBtn = document.querySelector(".clearBtn");
 clearBtn.addEventListener("click", clear);
@@ -85,13 +133,13 @@ function clear(e){
     styleChange(e);
 }
 
-
 //operator events
 const operators = document.querySelectorAll(".operator");
-operators.forEach(operator => operator.addEventListener("click", operation));
+operators.forEach(operator => operator.addEventListener("click", (e) => operation(e, 1)));
 
-function operation(e){
-    selectedOperator = e.target.textContent;
+function operation(e, n){
+    if (n == 1){selectedOperator = e.target.textContent;}
+    else {selectedOperator = n}
     if (displayValue == "") {
         useOperator = selectedOperator;
         return
@@ -127,10 +175,12 @@ const divideBtn = document.querySelector("#divideBtn");
 
 const operatorArray = [addBtn, subtractBtn, multiplyBtn, divideBtn];
 
-operatorArray.forEach(operator => operator.addEventListener("click", styleChange))
+operatorArray.forEach(operator => operator.addEventListener("click", (e) => styleChange(e, 1)))
 
-function styleChange(e){
-    const symbol = e.target.textContent;
+function styleChange(e, n){
+    let symbol;
+    if (n == 1){symbol = e.target.textContent;}
+    else {symbol = n}
     for (let i = 0; i < operatorArray.length; i++){
         if (symbol == operatorArray[i].textContent){
             operatorArray[i].classList.add("lightUp");
@@ -179,11 +229,13 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
-    if (b == ""){return};
-    if (b === 0){return 0};
-    let div = (a / b).toString();
-    if (div.split(".")[1].length > 10){
-        return (a / b).toFixed(10);
+    if (b == 0){return "0"};    
+    let div = (a / b).toString().split(".");
+    if (div.length == 1){
+        return a / b;
+    }
+    if (div[1].length > 10){
+        return (a / b).toFixed(8);
     }
     else {
         return (a/b);
@@ -196,3 +248,10 @@ function operate(a, operator, b) {
     if (operator == "×"){return multiply(a,b)};
     if (operator == "÷"){return divide(a,b)};
 }
+
+window.addEventListener("keydown", (e) => {
+    if (e.key == "Enter" || e.key == " "){
+        e.preventDefault();
+        return false;
+    }
+})

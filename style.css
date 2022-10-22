@@ -15,10 +15,11 @@ body {
     flex-direction: column;
     min-height: 800px;
     min-width: 500px;
-    border: 10px ridge rgb(2, 2, 129);
+    border: 10px ridge rgb(151, 66, 24);
     border-radius: 15px;
     background-color: rgb(43, 27, 27);
     box-shadow: 0px 0px 10px 10px #181818;
+    padding: 10px;
 }
 
 .displayDiv {
@@ -33,10 +34,10 @@ body {
     flex-direction: column;
     justify-content: end;
     align-items: end;
-    min-height: 140px;
-    max-height: 140px;
-    min-width: 420px;
-    max-width: 420px;
+    min-height: 150px;
+    max-height: 150px;
+    min-width: 430px;
+    max-width: 430px;
     border: 8px outset rgb(183, 183, 183);
     border-radius: 15px;
     background-color: rgb(39, 37, 37);
