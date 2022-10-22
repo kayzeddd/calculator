@@ -134,13 +134,37 @@ function clear(e){
 }
 
 //operator events
+const addBtn = document.querySelector("#addBtn");
+const subtractBtn = document.querySelector("#subtractBtn");
+const multiplyBtn = document.querySelector("#multiplyBtn");
+const divideBtn = document.querySelector("#divideBtn");
+
+const operatorArray = [addBtn, subtractBtn, multiplyBtn, divideBtn];
+
+operatorArray.forEach(operator => operator.addEventListener("click", (e) => styleChange(e, 1)))
+
+function styleChange(e, n){
+    if (displayValue === "") {return}
+    let symbol;
+    if (n == 1){symbol = e.target.textContent;}
+    else {symbol = n}
+    for (let i = 0; i < operatorArray.length; i++){
+        if (symbol == operatorArray[i].textContent){
+            operatorArray[i].classList.add("lightUp");
+        }
+        else{
+            operatorArray[i].classList.remove("lightUp");
+        }
+    }
+}
+
 const operators = document.querySelectorAll(".operator");
 operators.forEach(operator => operator.addEventListener("click", (e) => operation(e, 1)));
 
 function operation(e, n){
     if (n == 1){selectedOperator = e.target.textContent;}
     else {selectedOperator = n}
-    if (displayValue == "") {
+    if (displayValue === "") {
         useOperator = selectedOperator;
         return
     }
@@ -168,28 +192,6 @@ function operation(e, n){
     }
 }
 
-const addBtn = document.querySelector("#addBtn");
-const subtractBtn = document.querySelector("#subtractBtn");
-const multiplyBtn = document.querySelector("#multiplyBtn");
-const divideBtn = document.querySelector("#divideBtn");
-
-const operatorArray = [addBtn, subtractBtn, multiplyBtn, divideBtn];
-
-operatorArray.forEach(operator => operator.addEventListener("click", (e) => styleChange(e, 1)))
-
-function styleChange(e, n){
-    let symbol;
-    if (n == 1){symbol = e.target.textContent;}
-    else {symbol = n}
-    for (let i = 0; i < operatorArray.length; i++){
-        if (symbol == operatorArray[i].textContent){
-            operatorArray[i].classList.add("lightUp");
-        }
-        else{
-            operatorArray[i].classList.remove("lightUp");
-        }
-    }
-}
 
 
 //equalbtn event
@@ -197,7 +199,7 @@ const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", doOperation)
 
 function doOperation(e){
-    if (displayValue == "") {return}
+    if (displayValue === "") {return}
     if (saveNumbers.length >= 1){
         calculations.textContent += `${useOperator} ${displayValue}`
         saveNumbers.push(+displayValue);

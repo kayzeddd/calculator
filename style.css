@@ -13,8 +13,8 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 800px;
-    min-width: 500px;
+    min-height: 550px;
+    min-width: 350px;
     border: 10px ridge rgb(151, 66, 24);
     border-radius: 15px;
     background-color: rgb(22, 35, 38);
@@ -23,7 +23,7 @@ body {
 }
 
 .displayDiv {
-    min-height: 200px;
+    min-height: 150px;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -34,10 +34,10 @@ body {
     flex-direction: column;
     justify-content: end;
     align-items: end;
-    min-height: 150px;
-    max-height: 150px;
-    min-width: 430px;
-    max-width: 430px;
+    min-height: 115px;
+    max-height: 115px;
+    min-width: 320px;
+    max-width: 320px;
     border: 8px outset rgb(183, 183, 183);
     border-radius: 15px;
     background-color: rgb(39, 37, 37);
@@ -53,11 +53,11 @@ body {
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'digital-7';
-    min-height: 50px;
-    max-height: 50px;
-    max-width: 415px;
+    min-height: 44px;
+    max-height: 44px;
+    max-width: 320px;
     margin: 2px;
     color: rgb(192, 201, 202);
 
@@ -67,13 +67,13 @@ body {
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    font-size: 75px;
+    font-size: 50px;
     font-family: 'digital-7';
-    min-height: 70px;
-    max-height: 70px;
-    max-width: 420px;
+    min-height: 48px;
+    max-height: 48px;
+    max-width: 320px;
     margin: 2px;
-    margin-top: 12px;
+    margin-top: 9px;
     color: rgb(108, 209, 224);
 
 }
@@ -103,18 +103,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 32px;
-    min-height: 70px;
-    padding-bottom: 10px;
+    column-gap: 24px;
+    min-height: 52px;
+    padding-bottom: 8px;
 }
 
 .clearDiv button,
 .equalDiv button{
-    min-width: 180px;
-    font-size:35px;
-    padding: 5px;
-    border: 4px solid rgb(160, 160, 14);
-    box-shadow: 0px 6px #030303;
+    min-width: 140px;
+    font-size:20px;
+    padding: 4px;
+    border: 3px solid rgb(160, 160, 14);
+    box-shadow: 0px 5px #030303;
     background-color: black;
     color: rgb(229, 217, 217);
     border-radius: 15px;
@@ -123,26 +123,26 @@ body {
 }
 
 .equalDiv {
-    padding: 20px 0px 20px 0px;
+    padding: 15px 0px 15px 0px;
 }
 
 .equalDiv button{
-    border: 4px solid rgb(88, 154, 47);
+    border: 3px solid rgb(88, 154, 47);
 }
 
 .clearDiv button:hover,
 .equalDiv button:hover{background-color: rgb(39, 34, 34);}
 
 .clearDiv button:active,
-.equalDiv button:active{transform: translateY(4px);}
+.equalDiv button:active{transform: translateY(3px);}
 
 .buttonDiv {
     display: grid;
-    grid-template-columns: repeat(4, 90px);
-    grid-auto-rows: minmax(90px, auto);
+    grid-template-columns: repeat(4,68px);
+    grid-auto-rows: minmax(68px, auto);
     justify-content: center;
-    grid-gap: 10px;
-    grid-row-gap: 20px;
+    grid-gap: 7px;
+    grid-row-gap: 15px;
     
 }
 
@@ -151,7 +151,7 @@ body {
 .dotBtn,
 .negativeBtn,
 .operator {
-    font-size:40px;
+    font-size:25px;
     padding: 10px;
     border: 3px solid blue;
     background-color: black;
@@ -159,7 +159,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-radius: 15px;
     cursor: pointer;
-    box-shadow: 0px 6px #030303;
+    box-shadow: 0px 4px #030303;
 }
 
 .numberBtn:hover,
@@ -172,7 +172,7 @@ body {
 .equal:active,
 .dotBtn:active,
 .negativeBtn:active
-{transform: translateY(4px);}
+{transform: translateY(3px);}
 
 .operator{
     border: 3px solid brown;
@@ -180,27 +180,27 @@ body {
 
 .operator:hover{background-color: rgb(67, 25, 25);}
 
-.operator:active{transform: translateY(4px);}
+.operator:active{transform: translateY(3px);}
 
 .lightUp {
-    transform: translateY(2px);
+    transform: translateY(3px);
     border: 4px solid rgb(231, 77, 77);
     background-color: rgb(67, 25, 25);
 }
 
 .saveContainer {
-    min-width: 800px;
-    max-width: 800px;
-    max-height: 800px;
-    min-height: 800px;
+    min-width: 600px;
+    max-width: 600px;
+    max-height: 600px;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     background-image: url(./images/chalkboard.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    margin-left: 50px;
-    border: 25px solid transparent;
-    border-image: url(/images/frame.png) 50 stretch;
+    margin-left: 40px;
+    border: 20px solid transparent;
+    border-image: url(images/frame.png) 50 stretch;
     overflow-y: auto;
 }
 
@@ -212,33 +212,34 @@ body {
 .saveText {
     text-align: center;
     font-family: "Chalk-Regular";
-    font-size: 40px;
+    font-size: 28px;
     font-weight: 700px;
-    color:rgb(88, 200, 211);
+    color:rgb(99, 214, 224);
     border-bottom: 10px double rgb(229, 236, 228);
-    padding: 12px;
+    padding: 8px;
 }
 
 .saveDiv {
     display: flex;
     flex-direction: column;
 }
+
 .chalkText {
     white-space: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 35px;
+    font-size: 25px;
     color:rgb(248, 244, 244);
-    padding-left: 20px;
-    padding-top: 10px;
-    border-bottom: 4px solid rgb(240, 234, 234);
+    padding-left: 15px;
+    padding-top: 8px;
+    border-bottom: 2px solid rgb(240, 234, 234);
 }
 
 .saveContainer::-webkit-scrollbar,
 .chalkText::-webkit-scrollbar{
-    height: 5px;
-    width: 8px;
+    height: 6px;
+    width: 6px;
 }
 
 .saveContainer::-webkit-scrollbar-button,
