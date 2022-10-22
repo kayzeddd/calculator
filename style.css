@@ -17,7 +17,7 @@ body {
     min-width: 500px;
     border: 10px ridge rgb(151, 66, 24);
     border-radius: 15px;
-    background-color: rgb(43, 27, 27);
+    background-color: rgb(22, 35, 38);
     box-shadow: 0px 0px 10px 10px #181818;
     padding: 10px;
 }
@@ -111,7 +111,7 @@ body {
 .clearDiv button,
 .equalDiv button{
     min-width: 180px;
-    font-size:30px;
+    font-size:35px;
     padding: 5px;
     border: 4px solid rgb(160, 160, 14);
     box-shadow: 0px 6px #030303;
@@ -127,7 +127,7 @@ body {
 }
 
 .equalDiv button{
-    border: 4px solid rgb(106, 184, 58);
+    border: 4px solid rgb(88, 154, 47);
 }
 
 .clearDiv button:hover,
@@ -186,4 +186,93 @@ body {
     transform: translateY(2px);
     border: 4px solid rgb(231, 77, 77);
     background-color: rgb(67, 25, 25);
+}
+
+.saveContainer {
+    min-width: 800px;
+    max-width: 800px;
+    max-height: 800px;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    background-image: url(./images/chalkboard.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 50px;
+    border: 25px solid transparent;
+    border-image: url(/images/frame.png) 50 stretch;
+    overflow-y: auto;
+}
+
+@font-face {
+    font-family: "Chalk-Regular";
+    src: url(fonts/Chalk-Regular.ttf);
+}
+
+.saveText {
+    text-align: center;
+    font-family: "Chalk-Regular";
+    font-size: 40px;
+    font-weight: 700px;
+    color:rgb(88, 200, 211);
+    border-bottom: 10px double rgb(229, 236, 228);
+    padding: 12px;
+}
+
+.saveDiv {
+    display: flex;
+    flex-direction: column;
+}
+.chalkText {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    color:rgb(248, 244, 244);
+    padding-left: 20px;
+    padding-top: 10px;
+    border-bottom: 4px solid rgb(240, 234, 234);
+}
+
+.saveContainer::-webkit-scrollbar,
+.chalkText::-webkit-scrollbar{
+    height: 5px;
+    width: 8px;
+}
+
+.saveContainer::-webkit-scrollbar-button,
+.chalkText::-webkit-scrollbar-button{
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+.saveContainer::-webkit-scrollbar-thumb,
+.chalkText::-webkit-scrollbar-thumb{
+    background-color: rgb(56, 170, 163);
+}
+
+.saveContainer::-webkit-scrollbar-track,
+.chalkText::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.clearText {
+    font-family: "Chalk-Regular";
+    font-size: 25px;
+    font-weight: 700px;
+    background-color: black;
+    color: white;
+    border: 3px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.clearText:hover{
+    background-color: rgb(65, 61, 61);
+}
+
+.clearText:active{
+    transform: translateY(2px);
 }

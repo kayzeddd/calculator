@@ -212,6 +212,32 @@ function doOperation(e){
     }
 }
 
+//Save calculations button
+const saveBtn = document.querySelector(".saveBtn");
+saveBtn.addEventListener("click", save);
+const saveDiv = document.querySelector(".saveDiv");
+
+
+function save(){
+    if (usedEqual == true){
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("chalkText")
+        newDiv.textContent = `${calculations.textContent} = ${displayText.textContent}`
+        saveDiv.appendChild(newDiv)
+    }
+}
+
+//Clear save button
+const clearSaveBtn = document.querySelector(".clearText");
+clearSaveBtn.addEventListener("click", clearSave)
+
+function clearSave(){
+    const innerDiv = Array.from(saveDiv.querySelectorAll(".chalkText"));
+    for (let i = 0; i < innerDiv.length; i++){
+        saveDiv.removeChild(innerDiv[i]);
+    }
+}
+
 
 //Calculator funcs
 function add(a,b) {
@@ -234,7 +260,7 @@ function divide(a,b) {
     if (div.length == 1){
         return a / b;
     }
-    if (div[1].length > 10){
+    if (div[1].length > 8){
         return (a / b).toFixed(8);
     }
     else {
@@ -249,6 +275,8 @@ function operate(a, operator, b) {
     if (operator == "÷"){return divide(a,b)};
 }
 
+
+//disable "Enter" and "space" default events
 window.addEventListener("keydown", (e) => {
     if (e.key == "Enter" || e.key == " "){
         e.preventDefault();
